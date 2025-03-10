@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script, Roboto, Sniglet} from "next/font/google";
+import { Dancing_Script, Roboto, Sniglet} from "next/font/google";
 import "./globals.css";
 
 const dancingScript = Dancing_Script({

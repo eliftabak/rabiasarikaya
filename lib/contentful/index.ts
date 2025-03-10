@@ -1,6 +1,5 @@
 // lib/contentful/index.ts
 import { createClient } from 'contentful';
-import { IBlogPostSkeleton } from "@/lib/contentful/index.d";
 
 if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
   throw new Error("❌ Expected parameter accessToken or spaceId is missing.");
