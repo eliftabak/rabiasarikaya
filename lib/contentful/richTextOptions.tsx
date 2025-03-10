@@ -1,51 +1,20 @@
-import React from 'react';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, Document, Node } from "@contentful/rich-text-types";
+import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
 
-export const richTextOptions = {
-  renderMark: {
-    [MARKS.BOLD]: (text: React.ReactNode) => (
-      <strong className="font-bold">{text}</strong>
-    ),
-    [MARKS.ITALIC]: (text: React.ReactNode) => (
-      <em className="italic">{text}</em>
-    ),
-    [MARKS.UNDERLINE]: (text: React.ReactNode) => (
-      <span className="underline">{text}</span>
-    ),
-  },
+const richTextOptions: Options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-      <p className="mb-4 text-base">{children}</p>
+    [BLOCKS.PARAGRAPH]: (node: Node, children: React.ReactNode) => <p className="mb-4">{children}</p>,
+    [BLOCKS.HEADING_2]: (node: Node, children: React.ReactNode) => <h2 className="text-2xl font-bold">{children}</h2>,
+    [BLOCKS.HEADING_3]: (node: Node, children: React.ReactNode) => <h3 className="text-xl font-semibold">{children}</h3>,
+    [BLOCKS.UL_LIST]: (node: Node, children: React.ReactNode) => <ul className="list-disc pl-6">{children}</ul>,
+    [BLOCKS.OL_LIST]: (node: Node, children: React.ReactNode) => <ol className="list-decimal pl-6">{children}</ol>,
+    [BLOCKS.LIST_ITEM]: (node: Node, children: React.ReactNode) => <li>{children}</li>,
+    [INLINES.HYPERLINK]: (node: Node, children: React.ReactNode) => (
+      <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="text-[#5D8736] underline">
+        {children}
+      </a>
     ),
-    [BLOCKS.HEADING_1]: (node: any, children: React.ReactNode) => (
-      <h1 className="text-4xl font-bold mb-4">{children}</h1>
-    ),
-    [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => (
-      <h2 className="text-3xl font-bold mb-4">{children}</h2>
-    ),
-    [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
-      <h3 className="text-2xl font-bold mb-4">{children}</h3>
-    ),
-    [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
-      <ul className="list-disc ml-5 mb-4">{children}</ul>
-    ),
-    [BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => (
-      <ol className="list-decimal ml-5 mb-4">{children}</ol>
-    ),
-    [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
-      <li className="mb-1">{children}</li>
-    ),
-
-    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      const { file, title } = node.data.target.fields;
-      const url = file.url.startsWith('//') ? `https:${file.url}` : file.url;
-      return (
-        <img
-          src={url}
-          alt={title || 'Embedded Asset'}
-          className="my-4"
-        />
-      );
-    },
   },
 };
+
+export default richTextOptions;
