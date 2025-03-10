@@ -1,4 +1,3 @@
-// lib/richTextOptions.tsx
 import React from 'react';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
@@ -36,9 +35,8 @@ export const richTextOptions = {
     [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
       <li className="mb-1">{children}</li>
     ),
-    // Render embedded asset (e.g., images)
+
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      // Depending on your Contentful setup, node.data.target.fields might have the asset info.
       const { file, title } = node.data.target.fields;
       const url = file.url.startsWith('//') ? `https:${file.url}` : file.url;
       return (
