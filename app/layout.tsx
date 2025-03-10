@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script, Roboto} from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script, Roboto, Sniglet} from "next/font/google";
 import "./globals.css";
 
 const dancingScript = Dancing_Script({
@@ -9,6 +9,12 @@ const dancingScript = Dancing_Script({
 
 const roboto = Roboto({
   variable: "--font-roboto",
+  subsets: ["latin"],
+});
+
+const sniglet = Sniglet({
+  variable: "--font-sniglet",
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -25,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable} ${roboto.variable} antialiased`}
+        className={`${dancingScript.variable} ${roboto.variable} ${sniglet.variable} antialiased`}
       >
         {children}
       </body>
