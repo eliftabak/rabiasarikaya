@@ -17,11 +17,12 @@ export async function generateStaticParams() {
   }));
 }
 
-// @ts-expect-error: Next.js expects `params` to match `PageProps`, but it's already structured correctly.
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params;
+
   const query: BlogPostQuery = {
     content_type: 'blogPost',
-    'fields.slug': params.slug,
+    'fields.slug': slug,
     limit: 1,
   };
 
