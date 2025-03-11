@@ -12,6 +12,7 @@ type BlogPost = {
   slug: string;
   title: string;
   description: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   thumbnail?: any;
 };
 
