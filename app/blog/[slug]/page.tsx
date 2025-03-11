@@ -57,6 +57,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className='max-h-96 overflow-hidden'>
       {post.thumbnail && (
             <img
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               src={(post.thumbnail as any).fields.file.url}
               alt={post.title}
               style={{ maxWidth: '100%', height: 'auto' }}

@@ -5,7 +5,9 @@ import { Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const MobileCarousel = ({ videos }: { videos: any[] }) => {
+type Video = { embed: string; url: string };
+
+const MobileCarousel = ({ videos }: { videos: Video[] }) => {
   return (
     <div className="mt-8 w-full">
       <Swiper

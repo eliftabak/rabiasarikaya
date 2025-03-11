@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 import Link from "next/link";
+import { getAbsoluteUrl } from "@/lib/utils";
 
 type BlogPost = {
   slug: string;
@@ -15,10 +16,6 @@ type BlogPost = {
 };
 
 const BlogSwiper = ({ latestPosts }: { latestPosts: BlogPost[] }) => {
-  function getAbsoluteUrl(url: string): string {
-    return url.startsWith("//") ? `https:${url}` : url;
-  }
-
   return (
     <Swiper
       modules={[Pagination]}
@@ -33,6 +30,7 @@ const BlogSwiper = ({ latestPosts }: { latestPosts: BlogPost[] }) => {
           {/* Blog Image */}
           {post.thumbnail && (
             <Image
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               src={getAbsoluteUrl((post.thumbnail as any).fields.file.url)}
               alt={post.title}
               width={400}

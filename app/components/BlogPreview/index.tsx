@@ -2,16 +2,13 @@ import { getLatestPosts } from "@/lib/contentful";
 import Link from "next/link";
 import Image from "next/image";
 import BlogSwiper from "../BlogSwiper";
+import { getAbsoluteUrl } from "@/lib/utils";
 
 const BlogPreview = async () => {
   const latestPosts = (await getLatestPosts(3)).map(post => ({
     ...post,
     description: post.description || ""
   }));
-
-  function getAbsoluteUrl(url: string): string {
-    return url.startsWith("//") ? `https:${url}` : url;
-  }
 
   return (
     <section className="py-16 px-6 lg:py-26 max-w-6xl mx-auto">
@@ -25,6 +22,7 @@ const BlogPreview = async () => {
             {/* Blog Image */}
             {post.thumbnail && (
               <Image
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 src={getAbsoluteUrl((post.thumbnail as any).fields.file.url)}
                 alt={post.title}
                 width={400}
