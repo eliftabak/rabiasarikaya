@@ -1,9 +1,7 @@
-"use client"; // Required for animations in Next.js App Router
+"use client"; 
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useRef, useState } from "react";
 import MobileCarousel from "../MobileCarousel";
 
 const instagramVideos = [

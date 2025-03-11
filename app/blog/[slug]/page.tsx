@@ -2,7 +2,7 @@ import { client } from '@/lib/contentful'; // ensure this is your default or nam
 import { IBlogPostSkeleton, BlogPostQuery } from '@/lib/contentful/index.d';
 import { notFound } from 'next/navigation';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { richTextOptions } from '@/lib/contentful/richTextOptions';
+import richTextOptions from '@/lib/contentful/richTextOptions';
 import Breadcrumb, { BreadcrumbItem } from '../../components/Breadcrumb';
 
 export const revalidate = 60;
