@@ -17,6 +17,7 @@ export async function generateStaticParams() {
   }));
 }
 
+// @ts-ignore
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const query: BlogPostQuery = {
     content_type: 'blogPost',
